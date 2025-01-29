@@ -212,7 +212,7 @@ Here, we add a column of named `conservation` that could represent an evolutiona
 rowData(sce)$conservation <- rnorm(nrow(sce))
 ```
 
-This are just random numbers for demonstration purposes, but in practice storing gene-wise data in the `rowData` is convenient
+These are just random numbers for demonstration purposes, but in practice storing gene-wise data in the `rowData` is convenient
 and simplifies data management.
 
 ::: 
