@@ -206,14 +206,14 @@ Add a column of gene-wise metadata to the `rowData`.
 
 ::: solution
 
-Here, we add a column named `conservation` that could represent an evolutionary conservation score.
+Here, we add a column of named `conservation` that could represent an evolutionary conservation score. 
 
 ```{r}
 rowData(sce)$conservation <- rnorm(nrow(sce))
 ```
 
-This is just an example for demonstration purposes, but in practice it is convenient
-and simplifies data management to store any sort of gene-wise information in the columns of the `rowData`.
+This are just random numbers for demonstration purposes, but in practice storing gene-wise data in the `rowData` is convenient
+and simplifies data management.
 
 ::: 
 
