@@ -125,10 +125,10 @@ The complexity of the `SingleCellExperiment` container might be a little bit int
 One might be tempted to use a simpler approach by just keeping all of these components in separate objects,
 e.g. a `matrix` of counts, a `data.frame` of sample metadata, a `data.frame` of gene annotations, and so on.
 
-There are two main disadvantages to this "from-scratch" approach:
+There are two main disadvantages to this type of "from scratch" approach:
 
-1. It requires a substantial amount of manual bookkeeping to keep the different data components in sync. If you performed a QC step that removed dead cells from the count matrix, you also had to remember to remove that same set of cells from the cell-wise metadata. Did you filtered out genes that did not display sufficient expression levels to be retained for further analysis? Then you would need to make sure to not forget to filter the gene metadata table too. 
-2. All the downstream steps had to be "from scratch" as well. All the data munging, analysis, and visualization code had to be customized to the idiosyncrasies of a given input set.
+1. It requires a substantial amount of manual bookkeeping to keep the different data components in sync. If you performed a QC step that removed dead cells from the count matrix, you also had to remember to remove that same set of cells from the cell-wise metadata. Did you filter out genes that did not display sufficient expression levels to be retained for further analysis? Then you also need to remember to filter the gene metadata table too. 
+2. All the downstream steps have to be "from scratch" as well. All the data munging, analysis, and visualization code will need to be customized to the idiosyncrasies of a given input set.
 
 ::::
 
@@ -209,7 +209,7 @@ ENSMUSG00000102343         .         .         .
 You will notice that in this case we have a sparse matrix of class `dgTMatrix`
 inside the object. More generally, any "matrix-like" object can be used, e.g.,
 dense matrices or HDF5-backed matrices (as we will explore later in the
-[Working with large data](https://ccb-hms.github.io/osca-workbench/large_data.html)
+[Working with large data](https://carpentries-incubator.github.io/bioc-scrnaseq/large_data.html)
 episode).
 
 ### `colData` and `rowData`
@@ -279,15 +279,15 @@ Add a column of gene-wise metadata to the `rowData`.
 
 ::: solution
 
-Here, we add a column named `conservation` that could represent an evolutionary conservation score.
+Here, we add a column of named `conservation` that could represent an evolutionary conservation score. 
 
 
 ``` r
 rowData(sce)$conservation <- rnorm(nrow(sce))
 ```
 
-This is just an example for demonstration purposes, but in practice it is convenient
-and simplifies data management to store any sort of gene-wise information in the columns of the `rowData`.
+These are just random numbers for demonstration purposes, but in practice storing gene-wise data in the `rowData` is convenient
+and simplifies data management.
 
 ::: 
 
@@ -313,13 +313,13 @@ As for the other slots, we have the usual setter/getter, but it is somewhat rare
 
 It is more common for other functions to _store_ this information in the object, e.g., the `runPCA` function from the `scater` package.
 
-Here, we use `scater`'s `plotReducedDim` function as an example of how to extract this information _indirectly_ from the objects. Note that one could obtain the same results (somewhat less efficiently) by extracting the corresponding `reducedDim` matrix and `ggplot`.
+Here, we use `scater`'s `plotReducedDim` function as an example of how to extract this information _indirectly_ from the objects. Note that one could obtain the same results by manually extracting the corresponding `reducedDim` matrix and cell type labels then passing them to `ggplot` in a data frame.
 
 
 ``` r
 library(scater)
 
-plotReducedDim(sce, "pca.corrected.E8.5", colour_by = "celltype.mapped")
+plotReducedDim(sce, "pca.corrected.E8.5", colour_by = "stage.mapped")
 ```
 
 <img src="fig/intro-sce-rendered-unnamed-chunk-14-1.png" style="display: block; margin: auto;" />
@@ -458,62 +458,61 @@ attached base packages:
 [8] base     
 
 other attached packages:
- [1] scater_1.32.0                ggplot2_3.5.1               
+ [1] scater_1.32.1                ggplot2_3.5.1               
  [3] scuttle_1.14.0               MouseGastrulationData_1.18.0
  [5] SpatialExperiment_1.14.0     SingleCellExperiment_1.26.0 
  [7] SummarizedExperiment_1.34.0  Biobase_2.64.0              
- [9] GenomicRanges_1.56.0         GenomeInfoDb_1.40.1         
-[11] IRanges_2.38.0               S4Vectors_0.42.0            
+ [9] GenomicRanges_1.56.2         GenomeInfoDb_1.40.1         
+[11] IRanges_2.38.1               S4Vectors_0.42.1            
 [13] BiocGenerics_0.50.0          MatrixGenerics_1.16.0       
-[15] matrixStats_1.3.0            BiocStyle_2.32.0            
+[15] matrixStats_1.5.0            BiocStyle_2.32.1            
 
 loaded via a namespace (and not attached):
  [1] DBI_1.2.3                 formatR_1.14             
- [3] gridExtra_2.3             rlang_1.1.3              
+ [3] gridExtra_2.3             rlang_1.1.5              
  [5] magrittr_2.0.3            compiler_4.4.2           
- [7] RSQLite_2.3.7             DelayedMatrixStats_1.26.0
+ [7] RSQLite_2.3.9             DelayedMatrixStats_1.26.0
  [9] png_0.1-8                 vctrs_0.6.5              
-[11] pkgconfig_2.0.3           crayon_1.5.2             
+[11] pkgconfig_2.0.3           crayon_1.5.3             
 [13] fastmap_1.2.0             dbplyr_2.5.0             
-[15] magick_2.8.3              XVector_0.44.0           
-[17] labeling_0.4.3            utf8_1.2.4               
-[19] rmarkdown_2.27            UCSC.utils_1.0.0         
-[21] ggbeeswarm_0.7.2          purrr_1.0.2              
-[23] bit_4.0.5                 xfun_0.44                
-[25] zlibbioc_1.50.0           cachem_1.1.0             
-[27] beachmat_2.20.0           jsonlite_1.8.8           
-[29] blob_1.2.4                highr_0.11               
-[31] DelayedArray_0.30.1       BiocParallel_1.38.0      
-[33] irlba_2.3.5.1             parallel_4.4.2           
-[35] R6_2.5.1                  Rcpp_1.0.12              
-[37] knitr_1.47                Matrix_1.7-0             
-[39] tidyselect_1.2.1          viridis_0.6.5            
-[41] abind_1.4-5               yaml_2.3.8               
-[43] codetools_0.2-20          curl_5.2.1               
-[45] lattice_0.22-6            tibble_3.2.1             
-[47] withr_3.0.0               KEGGREST_1.44.0          
-[49] BumpyMatrix_1.12.0        evaluate_0.23            
-[51] BiocFileCache_2.12.0      ExperimentHub_2.12.0     
-[53] Biostrings_2.72.1         pillar_1.9.0             
-[55] BiocManager_1.30.23       filelock_1.0.3           
-[57] renv_1.0.11               generics_0.1.3           
-[59] BiocVersion_3.19.1        sparseMatrixStats_1.16.0 
-[61] munsell_0.5.1             scales_1.3.0             
-[63] glue_1.7.0                tools_4.4.2              
-[65] AnnotationHub_3.12.0      BiocNeighbors_1.22.0     
-[67] ScaledMatrix_1.12.0       cowplot_1.1.3            
-[69] grid_4.4.2                AnnotationDbi_1.66.0     
-[71] colorspace_2.1-0          GenomeInfoDbData_1.2.12  
-[73] beeswarm_0.4.0            BiocSingular_1.20.0      
-[75] vipor_0.4.7               cli_3.6.2                
-[77] rsvd_1.0.5                rappdirs_0.3.3           
-[79] fansi_1.0.6               viridisLite_0.4.2        
-[81] S4Arrays_1.4.1            dplyr_1.1.4              
-[83] gtable_0.3.5              digest_0.6.35            
-[85] ggrepel_0.9.5             SparseArray_1.4.8        
-[87] farver_2.1.2              rjson_0.2.21             
-[89] memoise_2.0.1             htmltools_0.5.8.1        
-[91] lifecycle_1.0.4           httr_1.4.7               
-[93] mime_0.12                 bit64_4.0.5              
+[15] magick_2.8.5              XVector_0.44.0           
+[17] labeling_0.4.3            rmarkdown_2.29           
+[19] UCSC.utils_1.0.0          ggbeeswarm_0.7.2         
+[21] purrr_1.0.2               bit_4.5.0.1              
+[23] xfun_0.50                 zlibbioc_1.50.0          
+[25] cachem_1.1.0              beachmat_2.20.0          
+[27] jsonlite_1.8.9            blob_1.2.4               
+[29] DelayedArray_0.30.1       BiocParallel_1.38.0      
+[31] irlba_2.3.5.1             parallel_4.4.2           
+[33] R6_2.5.1                  Rcpp_1.0.14              
+[35] knitr_1.49                Matrix_1.7-2             
+[37] tidyselect_1.2.1          abind_1.4-8              
+[39] yaml_2.3.10               viridis_0.6.5            
+[41] codetools_0.2-20          curl_6.2.0               
+[43] lattice_0.22-6            tibble_3.2.1             
+[45] withr_3.0.2               KEGGREST_1.44.1          
+[47] BumpyMatrix_1.12.0        evaluate_1.0.3           
+[49] BiocFileCache_2.12.0      ExperimentHub_2.12.0     
+[51] Biostrings_2.72.1         pillar_1.10.1            
+[53] BiocManager_1.30.25       filelock_1.0.3           
+[55] renv_1.1.0                generics_0.1.3           
+[57] BiocVersion_3.19.1        sparseMatrixStats_1.16.0 
+[59] munsell_0.5.1             scales_1.3.0             
+[61] glue_1.8.0                tools_4.4.2              
+[63] AnnotationHub_3.12.0      BiocNeighbors_1.22.0     
+[65] ScaledMatrix_1.12.0       cowplot_1.1.3            
+[67] grid_4.4.2                AnnotationDbi_1.66.0     
+[69] colorspace_2.1-1          GenomeInfoDbData_1.2.12  
+[71] beeswarm_0.4.0            BiocSingular_1.20.0      
+[73] vipor_0.4.7               cli_3.6.3                
+[75] rsvd_1.0.5                rappdirs_0.3.3           
+[77] viridisLite_0.4.2         S4Arrays_1.4.1           
+[79] dplyr_1.1.4               gtable_0.3.6             
+[81] digest_0.6.37             SparseArray_1.4.8        
+[83] ggrepel_0.9.6             farver_2.1.2             
+[85] rjson_0.2.23              memoise_2.0.1            
+[87] htmltools_0.5.8.1         lifecycle_1.0.4          
+[89] httr_1.4.7                mime_0.12                
+[91] bit64_4.6.0-1            
 ```
 

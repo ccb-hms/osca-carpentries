@@ -59,7 +59,7 @@ cells can be downloaded locally into SingleCellExperiment objects. Pseudo
 bulk counts are also available to facilitate large-scale, summary analyses of
 transcriptional profiles. 
 
-<img src="https://raw.githubusercontent.com/ccb-hms/osca-workbench/main/episodes/figures/curatedAtlasQuery.png" style="display: block; margin: auto;" />
+<img src="https://raw.githubusercontent.com/carpentries-incubator/bioc-scrnaseq/main/episodes/figures/curatedAtlasQuery.png" style="display: block; margin: auto;" />
 
 ## Data Sources in R / Bioconductor
 
