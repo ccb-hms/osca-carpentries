@@ -331,7 +331,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Multi-sample analyses</h1>
-        <p>Last updated on 2024-11-19 |
+        <p>Last updated on 2025-01-30 |
 
         <a href="https://github.com/ccb-hms/osca-carpentries/edit/main/episodes/multi-sample.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -558,7 +558,7 @@ factor presumably leading to this difference?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>Samples 5 and 6 were from the same “pool” of cells. Looking at the
 documentation for the dataset under <code>?WTChimeraData</code> we see
@@ -631,7 +631,7 @@ present in the corrected data.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <p>False. Batch-level data can be retained through confounding with
 experimental factors or poor ability to distinguish experimental effects
@@ -950,7 +950,7 @@ final analysis.</p>
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="output" tabindex="0"><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.
- 0.3189  0.9705  1.0901  1.0251  1.1486  1.2151 </code></pre>
+ 0.2944  0.9342  1.0764  1.0030  1.1300  1.1923 </code></pre>
 </div>
 <div class="codewrapper sourceCode" id="cb30">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -962,7 +962,7 @@ final analysis.</p>
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="output" tabindex="0"><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.
- 0.3046  8.7242  8.7242  8.6466  8.7242  8.7242 </code></pre>
+ 0.3042  8.7218  8.7218  8.6433  8.7218  8.7218 </code></pre>
 </div>
 <p>QL dispersion estimates for each gene as a function of abundance. Raw
 estimates (black) are shrunk towards the trend (blue) to yield squeezed
@@ -1005,16 +1005,16 @@ Up                      5</code></pre>
 </h3>
 <pre class="output" tabindex="0"><code>Coefficient:  factor(tomato)TRUE
                         logFC   logCPM          F       PValue          FDR
-ENSMUSG00000010760 -4.1515323 9.973704 1118.17411 3.424939e-12 1.548073e-08
-ENSMUSG00000096768  1.9987246 8.844258  375.41194 1.087431e-09 2.457594e-06
-ENSMUSG00000035299  1.7963926 6.904163  119.08173 3.853318e-07 5.805666e-04
-ENSMUSG00000086503 -6.4701526 7.411257  238.72531 1.114877e-06 1.259812e-03
-ENSMUSG00000101609  1.3784805 7.310009   79.94279 2.682051e-06 2.424574e-03
-ENSMUSG00000019188 -1.0191494 7.545530   62.01494 8.860823e-06 6.675153e-03
-ENSMUSG00000024423  0.9940616 7.391075   56.84876 1.322645e-05 8.540506e-03
-ENSMUSG00000042607 -0.9508732 7.468203   45.43086 3.625976e-05 2.048676e-02
-ENSMUSG00000036446 -0.8280894 9.401028   43.03008 4.822988e-05 2.293136e-02
-ENSMUSG00000027520  1.5929714 6.952923   42.86686 5.073310e-05 2.293136e-02</code></pre>
+ENSMUSG00000010760 -4.1526570 9.973704 1116.70486 3.464851e-12 1.566113e-08
+ENSMUSG00000096768  1.9988567 8.844258  376.77267 1.070605e-09 2.419567e-06
+ENSMUSG00000035299  1.7967382 6.904163  119.58114 3.781967e-07 5.698163e-04
+ENSMUSG00000086503 -6.4743977 7.411257  225.86232 2.112730e-06 2.387385e-03
+ENSMUSG00000101609  1.3775797 7.310009   80.03729 2.671320e-06 2.414873e-03
+ENSMUSG00000019188 -1.0192069 7.545530   61.91544 8.939417e-06 6.734361e-03
+ENSMUSG00000024423  0.9941377 7.391075   56.95653 1.312959e-05 8.477962e-03
+ENSMUSG00000042607 -0.9516835 7.468203   45.46329 3.618639e-05 2.044531e-02
+ENSMUSG00000036446 -0.8287663 9.401028   43.05154 4.740864e-05 2.317935e-02
+ENSMUSG00000027520  1.5915670 6.952923   42.77910 5.128175e-05 2.317935e-02</code></pre>
 </div>
 <p>All the previous steps can be easily performed with the following
 function for each cell type, thanks to the <code>pseudoBulkDGE</code>
@@ -1051,11 +1051,11 @@ intermediate plot or diagnostic.</p>
 <pre class="output" tabindex="0"><code>DataFrame with 13641 rows and 5 columns
                        logFC    logCPM         F      PValue         FDR
                    &lt;numeric&gt; &lt;numeric&gt; &lt;numeric&gt;   &lt;numeric&gt;   &lt;numeric&gt;
-ENSMUSG00000037664 -7.993129  11.55290  2730.230 1.05747e-13 4.44242e-10
-ENSMUSG00000010760 -2.575007  12.40592  1049.284 1.33098e-11 2.79572e-08
-ENSMUSG00000086503 -7.015618   7.49749   788.150 5.88102e-11 8.23539e-08
-ENSMUSG00000096768  1.828366   9.33239   343.044 3.58836e-09 3.76868e-06
-ENSMUSG00000022464  0.970431  10.28302   126.467 4.59369e-07 3.85961e-04
+ENSMUSG00000037664 -7.993258  11.55290  3389.401 1.49770e-25 6.29183e-22
+ENSMUSG00000010760 -2.574986  12.40592  1154.193 1.78995e-20 3.75980e-17
+ENSMUSG00000086503 -7.015615   7.49749   728.110 2.59315e-18 3.63127e-15
+ENSMUSG00000096768  1.828370   9.33239   304.252 2.37781e-14 2.49729e-11
+ENSMUSG00000022464  0.970406  10.28302   119.624 2.36805e-10 1.98964e-07
 ...                      ...       ...       ...         ...         ...
 ENSMUSG00000095247        NA        NA        NA          NA          NA
 ENSMUSG00000096808        NA        NA        NA          NA          NA
@@ -1080,7 +1080,7 @@ sizes? What does <code>logFC</code> stand for?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <p>“logFC” stands for log fold-change. <code>edgeR</code> uses a log2
 convention. Rather than reporting e.g. a 5-fold increase, it’s better to
@@ -1189,9 +1189,9 @@ our abundance data.</p>
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="output" tabindex="0"><code>       factor(tomato)TRUE
-Down                    4
-NotSig                 29
-Up                      1</code></pre>
+Down                    2
+NotSig                 32
+Up                      0</code></pre>
 </div>
 <div class="codewrapper sourceCode" id="cb45">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1204,16 +1204,16 @@ Up                      1</code></pre>
 </h3>
 <pre class="output" tabindex="0"><code>Coefficient:  factor(tomato)TRUE
                        logFC   logCPM         F       PValue          FDR
-ExE ectoderm      -5.7983253 13.13490 34.326044 1.497957e-07 5.093053e-06
-Parietal endoderm -6.9219242 12.36649 21.805721 1.468320e-05 2.496144e-04
-Erythroid3        -0.9115099 17.34677 12.478845 7.446554e-04 8.439428e-03
-Mesenchyme         0.9796446 16.32654 11.692412 1.064808e-03 9.050865e-03
-Neural crest      -1.0469872 14.83912  7.956363 6.274678e-03 4.266781e-02
-Endothelium        0.9241543 14.12195  4.437179 3.885736e-02 2.201917e-01
-Erythroid2        -0.6029365 15.97357  3.737927 5.735479e-02 2.682206e-01
-Cardiomyocytes     0.6789803 14.93321  3.569604 6.311073e-02 2.682206e-01
-ExE endoderm      -3.9996258 10.75172  3.086597 8.344133e-02 3.125815e-01
-Allantois          0.5462287 15.54924  2.922074 9.193574e-02 3.125815e-01</code></pre>
+ExE ectoderm      -5.7462892 13.13490 40.650293 1.853481e-08 6.301836e-07
+Parietal endoderm -6.9020425 12.36649 28.120078 1.338738e-06 2.275854e-05
+Mesenchyme         0.9656630 16.32654  6.729443 1.160472e-02 1.111437e-01
+Erythroid3        -0.9191728 17.34677  6.495750 1.307572e-02 1.111437e-01
+Neural crest      -1.0201642 14.83912  5.769547 1.904354e-02 1.294961e-01
+ExE endoderm      -3.9992208 10.75172  5.058004 2.775531e-02 1.572801e-01
+Endothelium        0.8672530 14.12195  3.614431 6.151880e-02 2.988056e-01
+Cardiomyocytes     0.6955522 14.93321  2.833474 9.690453e-02 4.118442e-01
+Allantois          0.5992522 15.54924  2.277082 1.359313e-01 5.135182e-01
+Erythroid2        -0.5185684 15.97357  1.773710 1.873705e-01 6.370598e-01</code></pre>
 </div>
 </div>
 <div class="section level3">
@@ -1255,27 +1255,27 @@ Up                      0</code></pre>
 </h3>
 <pre class="output" tabindex="0"><code>Coefficient:  factor(tomato)TRUE
                          logFC unshrunk.logFC   logCPM       PValue
-ExE ectoderm        -5.5156915     -5.9427658 13.06465 5.730409e-06
-Parietal endoderm   -6.5897795    -27.4235942 12.30091 1.215896e-04
-ExE endoderm        -3.9307381    -23.9369433 10.76159 7.352966e-02
-Mesenchyme           1.1615857      1.1628182 16.35239 1.335104e-01
-Endothelium          1.0564619      1.0620564 14.14422 2.136590e-01
-Caudal neurectoderm -1.4588627     -1.6095620 11.09613 3.257325e-01
-Cardiomyocytes       0.8521199      0.8545967 14.96579 3.649535e-01
-Neural crest        -0.8366836     -0.8392250 14.83184 3.750471e-01
-Def. endoderm        0.7335519      0.7467590 12.50001 4.219471e-01
-Allantois            0.7637525      0.7650565 15.54528 4.594987e-01
+ExE ectoderm        -5.5199847     -5.9467998 13.06465 7.002934e-06
+Parietal endoderm   -6.5913805    -27.4174596 12.30091 1.486452e-04
+ExE endoderm        -3.9308146    -23.9393101 10.76159 8.050176e-02
+Mesenchyme           1.1622187      1.1634540 16.35239 1.306006e-01
+Endothelium          1.0599946      1.0656145 14.14422 2.114555e-01
+Caudal neurectoderm -1.4559768     -1.6059830 11.09613 3.351750e-01
+Cardiomyocytes       0.8474499      0.8498787 14.96579 3.707748e-01
+Neural crest        -0.8411426     -0.8436838 14.83184 3.730129e-01
+Def. endoderm        0.7372230      0.7504500 12.50001 4.213046e-01
+Allantois            0.7569205      0.7581982 15.54528 4.713874e-01
                              FDR
-ExE ectoderm        0.0001948339
-Parietal endoderm   0.0020670230
-ExE endoderm        0.8333361231
-Mesenchyme          0.9866105512
-Endothelium         0.9866105512
-Caudal neurectoderm 0.9866105512
-Cardiomyocytes      0.9866105512
-Neural crest        0.9866105512
-Def. endoderm       0.9866105512
-Allantois           0.9866105512</code></pre>
+ExE ectoderm        0.0002380998
+Parietal endoderm   0.0025269677
+ExE endoderm        0.9123532342
+Mesenchyme          0.9859547701
+Endothelium         0.9859547701
+Caudal neurectoderm 0.9859547701
+Cardiomyocytes      0.9859547701
+Neural crest        0.9859547701
+Def. endoderm       0.9859547701
+Allantois           0.9859547701</code></pre>
 </div>
 <p>Addionally, the choice of can be guided by other external
 experimental data, like a previous or a pilot experiment.</p>
@@ -1298,7 +1298,7 @@ abundances table. Does it comport with the model results?</p>
 <button class="accordion-button hint-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseHint1" aria-expanded="false" aria-controls="collapseHint1">
   <h4 class="accordion-header" id="headingHint1"> Give me a hint </h4>
 </button>
-<div id="collapseHint1" class="accordion-collapse collapse" data-bs-parent="#accordionHint1" aria-labelledby="headingHint1">
+<div id="collapseHint1" class="accordion-collapse collapse" aria-labelledby="headingHint1" data-bs-parent="#accordionHint1">
 <div class="accordion-body">
 <p>You can simply hand <code>pheatmap()</code> a matrix as its only
 argument. <code>pheatmap()</code> has a million options you can adjust,
@@ -1314,7 +1314,7 @@ challenge.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
   <h4 class="accordion-header" id="headingSolution4"> Show me the solution </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb51">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1364,7 +1364,7 @@ distribution of p-values for the <code>Erythroid3</code> cell type.</p>
 <button class="accordion-button hint-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseHint2" aria-expanded="false" aria-controls="collapseHint2">
   <h4 class="accordion-header" id="headingHint2"> Give me a hint </h4>
 </button>
-<div id="collapseHint2" class="accordion-collapse collapse" data-bs-parent="#accordionHint2" aria-labelledby="headingHint2">
+<div id="collapseHint2" class="accordion-collapse collapse" aria-labelledby="headingHint2" data-bs-parent="#accordionHint2">
 <div class="accordion-body">
 <p>After running the second pseudobulk DGE, you can join the two
 <code>DataFrame</code>s of <code>Erythroid3</code> statistics using the
@@ -1379,7 +1379,7 @@ column from the gene IDs.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution5" aria-expanded="false" aria-controls="collapseSolution5">
   <h4 class="accordion-header" id="headingSolution5"> Show me the solution </h4>
 </button>
-<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
+<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb53">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1462,7 +1462,7 @@ effect correction. Why?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution6" aria-expanded="false" aria-controls="collapseSolution6">
   <h4 class="accordion-header" id="headingSolution6"> Show me the solution </h4>
 </button>
-<div id="collapseSolution6" class="accordion-collapse collapse" data-bs-parent="#accordionSolution6" aria-labelledby="headingSolution6">
+<div id="collapseSolution6" class="accordion-collapse collapse" aria-labelledby="headingSolution6" data-bs-parent="#accordionSolution6">
 <div class="accordion-body">
 <p>It’s important to have multiple samples within each experimental
 group because it helps the batch effect correction algorithm distinguish
@@ -1561,71 +1561,69 @@ attached base packages:
 
 other attached packages:
  [1] pheatmap_1.0.12              scran_1.32.0
- [3] scater_1.32.0                ggplot2_3.5.1
- [5] scuttle_1.14.0               edgeR_4.2.0
- [7] limma_3.60.2                 batchelor_1.20.0
+ [3] scater_1.32.1                ggplot2_3.5.1
+ [5] scuttle_1.14.0               edgeR_4.2.2
+ [7] limma_3.60.6                 batchelor_1.20.0
  [9] MouseGastrulationData_1.18.0 SpatialExperiment_1.14.0
 [11] SingleCellExperiment_1.26.0  SummarizedExperiment_1.34.0
-[13] Biobase_2.64.0               GenomicRanges_1.56.0
-[15] GenomeInfoDb_1.40.1          IRanges_2.38.0
-[17] S4Vectors_0.42.0             BiocGenerics_0.50.0
-[19] MatrixGenerics_1.16.0        matrixStats_1.3.0
-[21] BiocStyle_2.32.0
+[13] Biobase_2.64.0               GenomicRanges_1.56.2
+[15] GenomeInfoDb_1.40.1          IRanges_2.38.1
+[17] S4Vectors_0.42.1             BiocGenerics_0.50.0
+[19] MatrixGenerics_1.16.0        matrixStats_1.5.0
+[21] BiocStyle_2.32.1
 
 loaded via a namespace (and not attached):
-  [1] RColorBrewer_1.1-3        jsonlite_1.8.8
-  [3] magrittr_2.0.3            ggbeeswarm_0.7.2
-  [5] magick_2.8.3              farver_2.1.2
-  [7] rmarkdown_2.27            zlibbioc_1.50.0
-  [9] vctrs_0.6.5               memoise_2.0.1
- [11] DelayedMatrixStats_1.26.0 htmltools_0.5.8.1
- [13] S4Arrays_1.4.1            AnnotationHub_3.12.0
- [15] curl_5.2.1                BiocNeighbors_1.22.0
- [17] SparseArray_1.4.8         cachem_1.1.0
- [19] ResidualMatrix_1.14.0     igraph_2.0.3
- [21] mime_0.12                 lifecycle_1.0.4
- [23] pkgconfig_2.0.3           rsvd_1.0.5
- [25] Matrix_1.7-0              R6_2.5.1
- [27] fastmap_1.2.0             GenomeInfoDbData_1.2.12
- [29] digest_0.6.35             colorspace_2.1-0
- [31] AnnotationDbi_1.66.0      dqrng_0.4.1
- [33] irlba_2.3.5.1             ExperimentHub_2.12.0
- [35] RSQLite_2.3.7             beachmat_2.20.0
- [37] filelock_1.0.3            labeling_0.4.3
- [39] fansi_1.0.6               httr_1.4.7
- [41] abind_1.4-5               compiler_4.4.2
- [43] bit64_4.0.5               withr_3.0.0
- [45] BiocParallel_1.38.0       viridis_0.6.5
- [47] DBI_1.2.3                 highr_0.11
- [49] rappdirs_0.3.3            DelayedArray_0.30.1
- [51] rjson_0.2.21              bluster_1.14.0
- [53] tools_4.4.2               vipor_0.4.7
- [55] beeswarm_0.4.0            glue_1.7.0
- [57] grid_4.4.2                Rtsne_0.17
- [59] cluster_2.1.6             generics_0.1.3
- [61] gtable_0.3.5              BiocSingular_1.20.0
- [63] ScaledMatrix_1.12.0       metapod_1.12.0
- [65] utf8_1.2.4                XVector_0.44.0
- [67] ggrepel_0.9.5             BiocVersion_3.19.1
- [69] pillar_1.9.0              BumpyMatrix_1.12.0
- [71] splines_4.4.2             dplyr_1.1.4
- [73] BiocFileCache_2.12.0      lattice_0.22-6
- [75] renv_1.0.11               bit_4.0.5
- [77] tidyselect_1.2.1          locfit_1.5-9.9
- [79] Biostrings_2.72.1         knitr_1.47
- [81] gridExtra_2.3             xfun_0.44
- [83] statmod_1.5.0             UCSC.utils_1.0.0
- [85] yaml_2.3.8                evaluate_0.23
- [87] codetools_0.2-20          tibble_3.2.1
- [89] BiocManager_1.30.23       cli_3.6.2
- [91] munsell_0.5.1             Rcpp_1.0.12
- [93] dbplyr_2.5.0              png_0.1-8
- [95] parallel_4.4.2            blob_1.2.4
- [97] sparseMatrixStats_1.16.0  viridisLite_0.4.2
- [99] scales_1.3.0              purrr_1.0.2
-[101] crayon_1.5.2              rlang_1.1.3
-[103] cowplot_1.1.3             KEGGREST_1.44.0
-[105] formatR_1.14             </code></pre>
+  [1] DBI_1.2.3                 formatR_1.14
+  [3] gridExtra_2.3             rlang_1.1.5
+  [5] magrittr_2.0.3            compiler_4.4.2
+  [7] RSQLite_2.3.9             DelayedMatrixStats_1.26.0
+  [9] png_0.1-8                 vctrs_0.6.5
+ [11] pkgconfig_2.0.3           crayon_1.5.3
+ [13] fastmap_1.2.0             dbplyr_2.5.0
+ [15] magick_2.8.5              XVector_0.44.0
+ [17] labeling_0.4.3            rmarkdown_2.29
+ [19] ggbeeswarm_0.7.2          UCSC.utils_1.0.0
+ [21] purrr_1.0.2               bit_4.5.0.1
+ [23] bluster_1.14.0            xfun_0.50
+ [25] zlibbioc_1.50.0           cachem_1.1.0
+ [27] beachmat_2.20.0           jsonlite_1.8.9
+ [29] blob_1.2.4                DelayedArray_0.30.1
+ [31] BiocParallel_1.38.0       cluster_2.1.8
+ [33] irlba_2.3.5.1             parallel_4.4.2
+ [35] R6_2.5.1                  RColorBrewer_1.1-3
+ [37] Rcpp_1.0.14               knitr_1.49
+ [39] splines_4.4.2             Matrix_1.7-2
+ [41] igraph_2.1.4              tidyselect_1.2.1
+ [43] viridis_0.6.5             abind_1.4-8
+ [45] yaml_2.3.10               codetools_0.2-20
+ [47] curl_6.2.0                lattice_0.22-6
+ [49] tibble_3.2.1              withr_3.0.2
+ [51] KEGGREST_1.44.1           BumpyMatrix_1.12.0
+ [53] Rtsne_0.17                evaluate_1.0.3
+ [55] BiocFileCache_2.12.0      ExperimentHub_2.12.0
+ [57] Biostrings_2.72.1         pillar_1.10.1
+ [59] BiocManager_1.30.25       filelock_1.0.3
+ [61] renv_1.1.0                generics_0.1.3
+ [63] BiocVersion_3.19.1        sparseMatrixStats_1.16.0
+ [65] munsell_0.5.1             scales_1.3.0
+ [67] glue_1.8.0                metapod_1.12.0
+ [69] tools_4.4.2               AnnotationHub_3.12.0
+ [71] BiocNeighbors_1.22.0      ScaledMatrix_1.12.0
+ [73] locfit_1.5-9.10           cowplot_1.1.3
+ [75] grid_4.4.2                AnnotationDbi_1.66.0
+ [77] colorspace_2.1-1          GenomeInfoDbData_1.2.12
+ [79] beeswarm_0.4.0            BiocSingular_1.20.0
+ [81] vipor_0.4.7               cli_3.6.3
+ [83] rsvd_1.0.5                rappdirs_0.3.3
+ [85] viridisLite_0.4.2         S4Arrays_1.4.1
+ [87] dplyr_1.1.4               ResidualMatrix_1.14.1
+ [89] gtable_0.3.6              digest_0.6.37
+ [91] dqrng_0.4.1               ggrepel_0.9.6
+ [93] SparseArray_1.4.8         farver_2.1.2
+ [95] rjson_0.2.23              memoise_2.0.1
+ [97] htmltools_0.5.8.1         lifecycle_1.0.4
+ [99] httr_1.4.7                mime_0.12
+[101] statmod_1.5.0             bit64_4.6.0-1            </code></pre>
 </div>
 <!--
 Place links that you need to refer to multiple times across pages here. Delete
@@ -1667,7 +1665,7 @@ any links that you are not going to use.
         <p>Materials licensed under <a href="LICENSE.html">CC-BY 4.0</a> by the authors</p>
 
         <p>Template licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">CC-BY 4.0</a> by <a href="https://carpentries.org/" class="external-link">The Carpentries</a></p>
-        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.16.10" class="external-link">sandpaper (0.16.10)</a>, <a href="https://github.com/carpentries/pegboard/tree/0.7.7" class="external-link">pegboard (0.7.7)</a>, and <a href="https://github.com/carpentries/varnish/tree/1.0.5" class="external-link">varnish (1.0.5)</a></p>
+        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.16.11" class="external-link">sandpaper (0.16.11)</a>, <a href="https://github.com/carpentries/pegboard/tree/0.7.7" class="external-link">pegboard (0.7.7)</a>, and <a href="https://github.com/carpentries/varnish/tree/1.0.5" class="external-link">varnish (1.0.5)</a></p>
 			</div>
 		</footer></div> <!-- / div.container -->
 	<div id="to-top">
@@ -1689,8 +1687,8 @@ any links that you are not going to use.
   "url": "https://ccb-hms.github.io/osca-carpentries/multi-sample.html",
   "identifier": "https://ccb-hms.github.io/osca-carpentries/multi-sample.html",
   "dateCreated": "2024-01-10",
-  "dateModified": "2024-11-19",
-  "datePublished": "2024-11-19"
+  "dateModified": "2025-01-30",
+  "datePublished": "2025-01-30"
 }
 
   </script><script>

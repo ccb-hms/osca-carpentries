@@ -329,7 +329,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Introduction to Bioconductor and the SingleCellExperiment class</h1>
-        <p>Last updated on 2024-11-19 |
+        <p>Last updated on 2025-01-30 |
 
         <a href="https://github.com/ccb-hms/osca-carpentries/edit/main/episodes/intro-sce.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -499,7 +499,7 @@ manner.</p>
 <button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler1" aria-expanded="false" aria-controls="collapseSpoiler1">
   <h3 class="accordion-header" id="headingSpoiler1">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div> Benefits of using the integrated SingleCellExperiment data container </h3>
 </button>
-<div id="collapseSpoiler1" class="accordion-collapse collapse" aria-labelledby="headingSpoiler1" data-bs-parent="#accordionSpoiler1">
+<div id="collapseSpoiler1" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler1" aria-labelledby="headingSpoiler1">
 <div class="accordion-body">
 <p>The complexity of the <code>SingleCellExperiment</code> container
 might be a little bit intimidating in the beginning. One might be
@@ -507,17 +507,18 @@ tempted to use a simpler approach by just keeping all of these
 components in separate objects, e.g. a <code>matrix</code> of counts, a
 <code>data.frame</code> of sample metadata, a <code>data.frame</code> of
 gene annotations, and so on.</p>
-<p>There are two main disadvantages to this “from-scratch” approach:</p>
+<p>There are two main disadvantages to this type of “from scratch”
+approach:</p>
 <ol style="list-style-type: decimal"><li>It requires a substantial amount of manual bookkeeping to keep the
 different data components in sync. If you performed a QC step that
 removed dead cells from the count matrix, you also had to remember to
 remove that same set of cells from the cell-wise metadata. Did you
-filtered out genes that did not display sufficient expression levels to
-be retained for further analysis? Then you would need to make sure to
-not forget to filter the gene metadata table too.</li>
-<li>All the downstream steps had to be “from scratch” as well. All the
-data munging, analysis, and visualization code had to be customized to
-the idiosyncrasies of a given input set.</li>
+filter out genes that did not display sufficient expression levels to be
+retained for further analysis? Then you also need to remember to filter
+the gene metadata table too.</li>
+<li>All the downstream steps have to be “from scratch” as well. All the
+data munging, analysis, and visualization code will need to be
+customized to the idiosyncrasies of a given input set.</li>
 </ol></div>
 </div>
 </div>
@@ -580,7 +581,7 @@ methods.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p>Here we obtain the sixth sample and assign it to
 <code>sce6</code>:</p>
@@ -635,7 +636,7 @@ ENSMUSG00000102343         .         .         .</code></pre>
 <p>You will notice that in this case we have a sparse matrix of class
 <code>dgTMatrix</code> inside the object. More generally, any
 “matrix-like” object can be used, e.g., dense matrices or HDF5-backed
-matrices (as we will explore later in the <a href="https://ccb-hms.github.io/osca-workbench/large_data.html" class="external-link">Working
+matrices (as we will explore later in the <a href="https://carpentries-incubator.github.io/bioc-scrnaseq/large_data.html" class="external-link">Working
 with large data</a> episode).</p>
 </div>
 <div class="section level3">
@@ -725,9 +726,9 @@ cell_9771    1.15439     28795</code></pre>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
-<p>Here, we add a column named <code>conservation</code> that could
+<p>Here, we add a column of named <code>conservation</code> that could
 represent an evolutionary conservation score.</p>
 <div class="codewrapper sourceCode" id="cb20">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -735,9 +736,9 @@ represent an evolutionary conservation score.</p>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">rowData</span><span class="op">(</span><span class="va">sce</span><span class="op">)</span><span class="op">$</span><span class="va">conservation</span> <span class="op">&lt;-</span> <span class="fu">rnorm</span><span class="op">(</span><span class="fu">nrow</span><span class="op">(</span><span class="va">sce</span><span class="op">)</span><span class="op">)</span></span></code></pre>
 </div>
-<p>This is just an example for demonstration purposes, but in practice
-it is convenient and simplifies data management to store any sort of
-gene-wise information in the columns of the <code>rowData</code>.</p>
+<p>These are just random numbers for demonstration purposes, but in
+practice storing gene-wise data in the <code>rowData</code> is
+convenient and simplifies data management.</p>
 </div>
 </div>
 </div>
@@ -775,15 +776,16 @@ the <code>scater</code> package.</p>
 <p>Here, we use <code>scater</code>’s <code>plotReducedDim</code>
 function as an example of how to extract this information
 <em>indirectly</em> from the objects. Note that one could obtain the
-same results (somewhat less efficiently) by extracting the corresponding
-<code>reducedDim</code> matrix and <code>ggplot</code>.</p>
+same results by manually extracting the corresponding
+<code>reducedDim</code> matrix and cell type labels then passing them to
+<code>ggplot</code> in a data frame.</p>
 <div class="codewrapper sourceCode" id="cb23">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw">library</span><span class="op">(</span><span class="va">scater</span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu">plotReducedDim</span><span class="op">(</span><span class="va">sce</span>, <span class="st">"pca.corrected.E8.5"</span>, colour_by <span class="op">=</span> <span class="st">"celltype.mapped"</span><span class="op">)</span></span></code></pre>
+<span><span class="fu">plotReducedDim</span><span class="op">(</span><span class="va">sce</span>, <span class="st">"pca.corrected.E8.5"</span>, colour_by <span class="op">=</span> <span class="st">"stage.mapped"</span><span class="op">)</span></span></code></pre>
 </div>
 <figure><img src="../fig/intro-sce-rendered-unnamed-chunk-14-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><div id="exercise-1" class="callout challenge">
 <div class="callout-square">
@@ -804,7 +806,7 @@ or with some fake data in it) and add one or more columns as
 <button class="accordion-button hint-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseHint1" aria-expanded="false" aria-controls="collapseHint1">
   <h4 class="accordion-header" id="headingHint1"> Give me a hint </h4>
 </button>
-<div id="collapseHint1" class="accordion-collapse collapse" aria-labelledby="headingHint1" data-bs-parent="#accordionHint1">
+<div id="collapseHint1" class="accordion-collapse collapse" data-bs-parent="#accordionHint1" aria-labelledby="headingHint1">
 <div class="accordion-body">
 <p>The <code>SingleCellExperiment</code> constructor function can be
 used to create a new <code>SingleCellExperiment</code> object.</p>
@@ -817,7 +819,7 @@ used to create a new <code>SingleCellExperiment</code> object.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb24">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -870,7 +872,7 @@ created before.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
   <h4 class="accordion-header" id="headingSolution4"> Show me the solution </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb26">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -971,63 +973,62 @@ attached base packages:
 [8] base
 
 other attached packages:
- [1] scater_1.32.0                ggplot2_3.5.1
+ [1] scater_1.32.1                ggplot2_3.5.1
  [3] scuttle_1.14.0               MouseGastrulationData_1.18.0
  [5] SpatialExperiment_1.14.0     SingleCellExperiment_1.26.0
  [7] SummarizedExperiment_1.34.0  Biobase_2.64.0
- [9] GenomicRanges_1.56.0         GenomeInfoDb_1.40.1
-[11] IRanges_2.38.0               S4Vectors_0.42.0
+ [9] GenomicRanges_1.56.2         GenomeInfoDb_1.40.1
+[11] IRanges_2.38.1               S4Vectors_0.42.1
 [13] BiocGenerics_0.50.0          MatrixGenerics_1.16.0
-[15] matrixStats_1.3.0            BiocStyle_2.32.0
+[15] matrixStats_1.5.0            BiocStyle_2.32.1
 
 loaded via a namespace (and not attached):
  [1] DBI_1.2.3                 formatR_1.14
- [3] gridExtra_2.3             rlang_1.1.3
+ [3] gridExtra_2.3             rlang_1.1.5
  [5] magrittr_2.0.3            compiler_4.4.2
- [7] RSQLite_2.3.7             DelayedMatrixStats_1.26.0
+ [7] RSQLite_2.3.9             DelayedMatrixStats_1.26.0
  [9] png_0.1-8                 vctrs_0.6.5
-[11] pkgconfig_2.0.3           crayon_1.5.2
+[11] pkgconfig_2.0.3           crayon_1.5.3
 [13] fastmap_1.2.0             dbplyr_2.5.0
-[15] magick_2.8.3              XVector_0.44.0
-[17] labeling_0.4.3            utf8_1.2.4
-[19] rmarkdown_2.27            UCSC.utils_1.0.0
-[21] ggbeeswarm_0.7.2          purrr_1.0.2
-[23] bit_4.0.5                 xfun_0.44
-[25] zlibbioc_1.50.0           cachem_1.1.0
-[27] beachmat_2.20.0           jsonlite_1.8.8
-[29] blob_1.2.4                highr_0.11
-[31] DelayedArray_0.30.1       BiocParallel_1.38.0
-[33] irlba_2.3.5.1             parallel_4.4.2
-[35] R6_2.5.1                  Rcpp_1.0.12
-[37] knitr_1.47                Matrix_1.7-0
-[39] tidyselect_1.2.1          viridis_0.6.5
-[41] abind_1.4-5               yaml_2.3.8
-[43] codetools_0.2-20          curl_5.2.1
-[45] lattice_0.22-6            tibble_3.2.1
-[47] withr_3.0.0               KEGGREST_1.44.0
-[49] BumpyMatrix_1.12.0        evaluate_0.23
-[51] BiocFileCache_2.12.0      ExperimentHub_2.12.0
-[53] Biostrings_2.72.1         pillar_1.9.0
-[55] BiocManager_1.30.23       filelock_1.0.3
-[57] renv_1.0.11               generics_0.1.3
-[59] BiocVersion_3.19.1        sparseMatrixStats_1.16.0
-[61] munsell_0.5.1             scales_1.3.0
-[63] glue_1.7.0                tools_4.4.2
-[65] AnnotationHub_3.12.0      BiocNeighbors_1.22.0
-[67] ScaledMatrix_1.12.0       cowplot_1.1.3
-[69] grid_4.4.2                AnnotationDbi_1.66.0
-[71] colorspace_2.1-0          GenomeInfoDbData_1.2.12
-[73] beeswarm_0.4.0            BiocSingular_1.20.0
-[75] vipor_0.4.7               cli_3.6.2
-[77] rsvd_1.0.5                rappdirs_0.3.3
-[79] fansi_1.0.6               viridisLite_0.4.2
-[81] S4Arrays_1.4.1            dplyr_1.1.4
-[83] gtable_0.3.5              digest_0.6.35
-[85] ggrepel_0.9.5             SparseArray_1.4.8
-[87] farver_2.1.2              rjson_0.2.21
-[89] memoise_2.0.1             htmltools_0.5.8.1
-[91] lifecycle_1.0.4           httr_1.4.7
-[93] mime_0.12                 bit64_4.0.5              </code></pre>
+[15] magick_2.8.5              XVector_0.44.0
+[17] labeling_0.4.3            rmarkdown_2.29
+[19] UCSC.utils_1.0.0          ggbeeswarm_0.7.2
+[21] purrr_1.0.2               bit_4.5.0.1
+[23] xfun_0.50                 zlibbioc_1.50.0
+[25] cachem_1.1.0              beachmat_2.20.0
+[27] jsonlite_1.8.9            blob_1.2.4
+[29] DelayedArray_0.30.1       BiocParallel_1.38.0
+[31] irlba_2.3.5.1             parallel_4.4.2
+[33] R6_2.5.1                  Rcpp_1.0.14
+[35] knitr_1.49                Matrix_1.7-2
+[37] tidyselect_1.2.1          abind_1.4-8
+[39] yaml_2.3.10               viridis_0.6.5
+[41] codetools_0.2-20          curl_6.2.0
+[43] lattice_0.22-6            tibble_3.2.1
+[45] withr_3.0.2               KEGGREST_1.44.1
+[47] BumpyMatrix_1.12.0        evaluate_1.0.3
+[49] BiocFileCache_2.12.0      ExperimentHub_2.12.0
+[51] Biostrings_2.72.1         pillar_1.10.1
+[53] BiocManager_1.30.25       filelock_1.0.3
+[55] renv_1.1.0                generics_0.1.3
+[57] BiocVersion_3.19.1        sparseMatrixStats_1.16.0
+[59] munsell_0.5.1             scales_1.3.0
+[61] glue_1.8.0                tools_4.4.2
+[63] AnnotationHub_3.12.0      BiocNeighbors_1.22.0
+[65] ScaledMatrix_1.12.0       cowplot_1.1.3
+[67] grid_4.4.2                AnnotationDbi_1.66.0
+[69] colorspace_2.1-1          GenomeInfoDbData_1.2.12
+[71] beeswarm_0.4.0            BiocSingular_1.20.0
+[73] vipor_0.4.7               cli_3.6.3
+[75] rsvd_1.0.5                rappdirs_0.3.3
+[77] viridisLite_0.4.2         S4Arrays_1.4.1
+[79] dplyr_1.1.4               gtable_0.3.6
+[81] digest_0.6.37             SparseArray_1.4.8
+[83] ggrepel_0.9.6             farver_2.1.2
+[85] rjson_0.2.23              memoise_2.0.1
+[87] htmltools_0.5.8.1         lifecycle_1.0.4
+[89] httr_1.4.7                mime_0.12
+[91] bit64_4.6.0-1            </code></pre>
 </div>
 <!--
 Place links that you need to refer to multiple times across pages here. Delete
@@ -1069,7 +1070,7 @@ any links that you are not going to use.
         <p>Materials licensed under <a href="LICENSE.html">CC-BY 4.0</a> by the authors</p>
 
         <p>Template licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">CC-BY 4.0</a> by <a href="https://carpentries.org/" class="external-link">The Carpentries</a></p>
-        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.16.10" class="external-link">sandpaper (0.16.10)</a>, <a href="https://github.com/carpentries/pegboard/tree/0.7.7" class="external-link">pegboard (0.7.7)</a>, and <a href="https://github.com/carpentries/varnish/tree/1.0.5" class="external-link">varnish (1.0.5)</a></p>
+        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.16.11" class="external-link">sandpaper (0.16.11)</a>, <a href="https://github.com/carpentries/pegboard/tree/0.7.7" class="external-link">pegboard (0.7.7)</a>, and <a href="https://github.com/carpentries/varnish/tree/1.0.5" class="external-link">varnish (1.0.5)</a></p>
 			</div>
 		</footer></div> <!-- / div.container -->
 	<div id="to-top">
@@ -1091,8 +1092,8 @@ any links that you are not going to use.
   "url": "https://ccb-hms.github.io/osca-carpentries/instructor/intro-sce.html",
   "identifier": "https://ccb-hms.github.io/osca-carpentries/instructor/intro-sce.html",
   "dateCreated": "2024-01-10",
-  "dateModified": "2024-11-19",
-  "datePublished": "2024-11-19"
+  "dateModified": "2025-01-30",
+  "datePublished": "2025-01-30"
 }
 
   </script><script>
